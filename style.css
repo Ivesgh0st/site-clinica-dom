@@ -1,6 +1,22 @@
 /* =========================================
    VARIÁVEIS — tema Clínica DOM
    ========================================= */
+@font-face {
+  font-family: 'Bogart Black';
+  src: url('fonts/bogart/Bogart-Black-trial.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Bogart Light';
+  src: url('fonts/bogart/Bogart-Light-trial.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --cor-primaria: #1a4fc4;
   --cor-primaria-escura: #0f3490;
@@ -12,8 +28,8 @@
   --cor-texto-claro: #ffffff;
   --cor-fundo: #ffffff;
   --cor-acento: #e8f0ff;
-  --fonte-titulo: 'Playfair Display', serif;
-  --fonte-corpo: 'Lato', sans-serif;
+  --fonte-titulo: 'Bogart Black', 'Playfair Display', serif;
+  --fonte-corpo: 'Bogart Light', 'Lato', sans-serif;
   --raio-borda: 16px;
   --raio-borda-lg: 28px;
   --sombra: 0 8px 32px rgba(26,79,196,0.10);
@@ -154,6 +170,7 @@ img {
 }
 
 #header nav ul li a {
+  font-family: var(--fonte-corpo);
   font-size: 0.92rem;
   font-weight: 700;
   color: var(--cor-texto);
@@ -327,8 +344,8 @@ img {
 }
 
 .hero-left img {
-  max-width: 320px;
-  height: 380px;
+  max-width: 400px;
+  height: 350px;
   object-fit: cover;
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
   box-shadow: 0 24px 60px rgba(26,79,196,0.22);
@@ -401,9 +418,12 @@ img {
   margin-bottom: 12px;
 }
 
-#servicos h2 {
+#servicos h2,
+#equipe .equipe-header h2,
+#sobre h2,
+#contato h2 {
   font-size: 2.2rem;
-  color: var(--cor-texto);
+  color: var(--cor-primaria);
   margin-bottom: 56px;
   text-align: center;
   letter-spacing: -0.01em;
@@ -510,7 +530,7 @@ img {
 
 #equipe .equipe-header h2 {
   font-size: 2.2rem;
-  color: var(--cor-texto);
+  color: var(--cor-primaria);
   margin-bottom: 12px;
   letter-spacing: -0.01em;
 }
@@ -670,7 +690,7 @@ img {
 
 #sobre h2 {
   font-size: 2.2rem;
-  color: var(--cor-texto);
+  color: var(--cor-primaria);
   margin-bottom: 20px;
   letter-spacing: -0.01em;
 }
@@ -726,6 +746,7 @@ img {
   background: var(--cor-fundo);
   text-align: center;
   position: relative;
+  font-family: Arial, sans-serif;
 }
 
 #contato::after {
@@ -741,7 +762,7 @@ img {
 
 #contato h2 {
   font-size: 2.2rem;
-  color: var(--cor-texto);
+  color: var(--cor-primaria);
   margin-bottom: 16px;
   letter-spacing: -0.01em;
 }
@@ -824,38 +845,42 @@ img {
   color: rgba(255,255,255,0.85);
   padding: 28px 0;
   text-align: center;
+  font-family: Arial, sans-serif;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
 }
 
 /* =========================================
-   RESPONSIVO
+   RESPONSIVO — TABLET (≤ 900px)
    ========================================= */
 @media (max-width: 900px) {
   .container { padding: 0 20px; }
 
+  /* Header: empilha logo + nav */
   #header .container {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 10px;
   }
 
   #header nav {
     width: 100%;
-    margin-top: 14px;
+    justify-content: center;
   }
 
   #header nav ul {
     justify-content: center;
     flex-wrap: wrap;
-    gap: 18px;
+    gap: 16px;
   }
 
+  /* Hero: coluna, texto primeiro */
   #hero {
     flex-direction: column;
-    padding: 60px 20px 50px;
+    padding: 56px 20px 48px;
     text-align: center;
     min-height: auto;
-    gap: 38px;
+    gap: 36px;
   }
 
   .hero-right {
@@ -869,185 +894,202 @@ img {
 
   .hero-right p {
     max-width: 100%;
-    margin: 0 auto 30px;
+    margin: 0 auto 28px;
   }
 
-  #hero h2 {
-    font-size: 2.4rem;
-  }
+  #hero h2 { font-size: 2.4rem; }
 
   .hero-left img {
-    max-width: 280px;
-    height: 300px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container { padding: 0 18px; }
-
-  #header nav ul li a {
-    font-size: 0.80rem;
+    max-width: 260px;
+    height: 280px;
   }
 
-  #hero {
-    padding: 52px 18px 42px;
-    gap: 28px;
-  }
-
-  #hero h2 {
-    font-size: 2rem;
-  }
-
-  .hero-right p {
-    margin-bottom: 24px;
-  }
-
-  .hero-left img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  }
-
-  #servicos {
-    padding: 80px 0;
-  }
-
-  #servicos h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-  }
-
-  .cards {
-    gap: 22px;
-  }
-
-  .card {
-    padding: 32px 24px;
-  }
-
-  #equipe .equipe-card {
-    padding: 30px 20px;
-  }
-
-  #equipe .equipe-slide {
-    gap: 24px;
-  }
-
-  #equipe .equipe-slide img {
-    width: 100%;
-    max-width: 100%;
-    height: 260px;
-    margin-bottom: 24px;
-  }
-
-  #equipe .equipe-controls {
-    position: static;
-    transform: none;
-    margin-top: 24px;
-    padding: 0;
-    left: auto;
-    right: auto;
-  }
-
+  /* Sobre: empilha */
   #sobre .container {
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
   }
 
   #sobre .sobre-image-right {
     max-width: 100%;
+    width: 100%;
   }
 
-  #sobre .sobre-image-right::before {
-    inset: -12px;
+  #sobre .sobre-image-right video {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
   }
 
-  #sobre p {
-    max-width: 100%;
+  #sobre p { max-width: 100%; }
+
+  /* Equipe: slider em coluna */
+  #equipe .equipe-slide.active {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
-  #contato {
-    padding: 80px 0;
+  #equipe .equipe-slide img {
+    width: 100%;
+    max-width: 340px;
+    height: 280px;
+    margin: 0 auto 20px;
   }
 
-  .info-contato {
-    gap: 12px;
-    margin-top: 36px;
+  #equipe .slide-text { text-align: center; }
+
+  #equipe .equipe-controls {
+    position: static;
+    transform: none;
+    margin-top: 20px;
+    padding: 0;
   }
 }
 
+/* =========================================
+   RESPONSIVO — MOBILE (≤ 600px)
+   ========================================= */
 @media (max-width: 600px) {
   .container { padding: 0 16px; }
 
+  /* Header: menu compacto em linha única */
+  #header { padding: 10px 0; }
+
+  #header .logo img { max-height: 42px; }
+
   #header nav ul {
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+    justify-content: flex-start;
   }
 
   #header nav ul li a {
-    font-size: 0.76rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
   }
 
+  /* Hero */
   #hero {
-    padding: 44px 16px 34px;
-    gap: 22px;
+    padding: 42px 16px 36px;
+    gap: 24px;
   }
 
-  #hero h2 {
-    font-size: 1.85rem;
-  }
+  #hero h2 { font-size: 1.9rem; }
 
   .hero-right p {
-    font-size: 1rem;
+    font-size: 0.97rem;
+    margin-bottom: 20px;
   }
 
-  .card {
-    padding: 28px 20px;
+  .hero-badge { font-size: 0.74rem; padding: 5px 13px; }
+
+  .hero-left img {
+    max-width: 220px;
+    height: 240px;
   }
 
-  #equipe .equipe-card {
-    padding: 24px 16px;
-  }
-
-  #contato > .container > p {
-    margin-bottom: 24px;
-  }
-
-  .info-contato p {
+  .btn-whatsapp {
+    font-size: 0.92rem;
+    padding: 13px 24px;
     width: 100%;
     justify-content: center;
   }
-}
 
-@media (max-width: 480px) {
-  .container { padding: 0 14px; }
+  /* Serviços */
+  #servicos { padding: 64px 0; }
+  #servicos h2 { font-size: 1.8rem; margin-bottom: 32px; }
 
-  #header nav ul {
-    gap: 8px;
-  }
-
-  #header nav ul li a {
-    font-size: 0.72rem;
-  }
-
-  #hero h2 {
-    font-size: 1.7rem;
-  }
-
-  .hero-right p {
-    font-size: 0.98rem;
-  }
-
-  .hero-left img {
-    max-width: 260px;
-  }
+  .cards { grid-template-columns: 1fr; gap: 18px; }
 
   .card {
-    padding: 24px 16px;
+    padding: 28px 20px;
+    /* Desativa flutuação no mobile (consome bateria e distrai) */
+    animation: none;
   }
+
+  /* Equipe */
+  #equipe { padding: 64px 0; }
+  #equipe .equipe-header h2 { font-size: 1.8rem; }
+
+  #equipe .equipe-card {
+    padding: 24px 16px;
+    border-radius: 20px;
+  }
+
+  #equipe .equipe-slide img {
+    max-width: 100%;
+    height: 220px;
+  }
+
+  #equipe .slide-text h3 { font-size: 1.3rem; }
+  #equipe .slide-text p { font-size: 0.93rem; }
 
   #equipe .equipe-controls button {
     width: 42px;
     height: 42px;
     font-size: 1.2rem;
   }
+
+  .equipe-dots { margin-top: 18px; }
+
+  /* Sobre */
+  #sobre { padding: 64px 0; }
+  #sobre h2 { font-size: 1.8rem; }
+  #sobre p { font-size: 0.97rem; }
+
+  #sobre .sobre-image-right::before { inset: -8px; }
+
+  #sobre .sobre-image-right video {
+    border-radius: 14px;
+  }
+
+  /* Contato */
+  #contato { padding: 64px 0; }
+  #contato h2 { font-size: 1.8rem; }
+  #contato > .container > p { font-size: 0.97rem; margin-bottom: 24px; }
+
+  .info-contato {
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .info-contato p {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding: 11px 16px;
+    text-align: center;
+    /* Permite quebra em telas muito estreitas */
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Botão flutuante menor */
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+/* =========================================
+   RESPONSIVO — MOBILE PEQUENO (≤ 380px)
+   ========================================= */
+@media (max-width: 380px) {
+  #hero h2 { font-size: 1.65rem; }
+
+  .hero-left img {
+    max-width: 180px;
+    height: 200px;
+  }
+
+  #header nav ul li a { font-size: 0.68rem; }
+
+  .btn-whatsapp { font-size: 0.87rem; padding: 12px 18px; }
 }
